@@ -51,7 +51,7 @@ button { font: inherit; cursor: pointer; }
 /* ---------- type ---------- */
 .script { font-family: var(--script); color: var(--gold); font-size: clamp(26px, 3.4vw, 38px); line-height: 1; display: block; margin-bottom: 10px; transform: rotate(-2deg); transform-origin: left; }
 h1, h2, h3 { font-family: var(--display); font-weight: 700; letter-spacing: 0.02em; line-height: 1.1; margin: 0; }
-h2 { font-size: clamp(32px, 4.6vw, 54px); }
+h2 { font-size: clamp(28px, 4.6vw, 54px); overflow-wrap: break-word; }
 h3 { font-size: 22px; }
 .lede { color: var(--muted); font-size: clamp(17px, 1.6vw, 19px); max-width: 60ch; }
 .gold-text {
@@ -149,7 +149,14 @@ h3 { font-size: 22px; }
 .hero-copy > *:nth-child(5) { animation-delay: .32s; }
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-logo { order: -1; width: min(220px, 60%); justify-self: start; }
+  .hero-logo { display: none; }
+  .hero { min-height: auto; align-items: flex-start; padding: 112px 0 64px; }
+  .hero h1 { font-size: clamp(34px, 9.4vw, 54px); margin: 4px 0 18px; }
+  .hero .lede { margin-bottom: 26px; }
+  .hero-ctas { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .hero-ctas .btn:first-child { grid-column: 1 / -1; }
+  .hero-ctas .btn { padding: 14px 12px; }
+  .hero-badges { margin-top: 28px; flex-direction: column; gap: 10px; }
   .hero::before { background: linear-gradient(180deg, rgba(13,9,7,.75) 0%, rgba(13,9,7,.92) 50%, var(--ink) 100%); }
 }
 
