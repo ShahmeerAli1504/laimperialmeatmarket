@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Yellowtail&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/styles.css?v=202611032052" />
+  <link rel="stylesheet" href="/assets/styles.css?v=202611051430" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -56,6 +56,12 @@
     <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
     <symbol id="i-dir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-8-8 18-2-8-8-2Z"/></symbol>
     <symbol id="i-party" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 9 7l8 8-13 5Z"/><path d="M14 4v2M19 9h2M17 5l1.5-1.5M20 13l1 1"/></symbol>
+    <symbol id="i-antler" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-5M12 16c-2 0-4-1.5-4.5-4M12 16c2 0 4-1.5 4.5-4"/><path d="M7.5 12 5 9M7.5 12 4 12.5M5 9 3 5M5 9 7 5.5M6.2 7 4.5 3"/><path d="M16.5 12 19 9M16.5 12l3.5.5M19 9l2-4M19 9l-2-3.5M17.8 7l1.7-4"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></symbol>
+    <symbol id="i-msg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4V5Z"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></symbol>
   </svg>
 
   <!-- ================= HEADER ================= -->
@@ -85,6 +91,8 @@
   </header>
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
     <a class="link" href="#carniceria" data-i18n="nav.market">Meat Market</a>
+    <a class="link" href="#cortes" data-i18n="nav.cuts">Pick Your Cut</a>
+    <a class="link" href="#wild-game" data-i18n="nav.wild">Wild Game</a>
     <a class="link" href="#taqueria" data-i18n="nav.taqueria">Taqueria</a>
     <a class="link" href="#panaderia" data-i18n="nav.bakery">Bakery</a>
     <a class="link" href="#abarrotes" data-i18n="nav.groceries">Groceries</a>
@@ -120,8 +128,8 @@
 
     <div class="marquee" aria-hidden="true">
       <div class="marquee-track">
-        <span>Carnicería</span><span>Taquería</span><span>Panadería</span><span>Abarrotes</span><span>Carne Asada</span><span>Birria</span><span>Al Pastor</span><span>Pan Dulce</span><span>Aguas Frescas</span><span>Catering</span>
-        <span>Carnicería</span><span>Taquería</span><span>Panadería</span><span>Abarrotes</span><span>Carne Asada</span><span>Birria</span><span>Al Pastor</span><span>Pan Dulce</span><span>Aguas Frescas</span><span>Catering</span>
+        <span>Carnicería</span><span>Taquería</span><span>Panadería</span><span>Abarrotes</span><span>Carne Asada</span><span>Wild Game</span><span>Birria</span><span>Al Pastor</span><span>Pan Dulce</span><span>Aguas Frescas</span><span>Catering</span>
+        <span>Carnicería</span><span>Taquería</span><span>Panadería</span><span>Abarrotes</span><span>Carne Asada</span><span>Wild Game</span><span>Birria</span><span>Al Pastor</span><span>Pan Dulce</span><span>Aguas Frescas</span><span>Catering</span>
       </div>
     </div>
 
@@ -211,17 +219,132 @@
           </div>
           <div class="reveal">
             <div class="price-card">
-              <h3><svg width="22" height="22" style="color:var(--gold)"><use href="#i-knife"/></svg><span data-i18n="meat.cardh">Carne Asada Essentials</span></h3>
-              <p class="note" data-i18n="meat.note">Marinated or plain. DoorDash prices shown — ask in store for by-the-pound pricing.</p>
-              <ul class="price-list" id="raw-list"></ul>
+              <h3><svg width="22" height="22" style="color:var(--gold)"><use href="#i-knife"/></svg><span data-i18n="meat.cardh">Fresh at the Counter</span></h3>
+              <p class="note" data-i18n="meat.note">Cut to order every day — by the pound, your way. Marinated or plain.</p>
               <ul class="checks">
                 <li><svg><use href="#i-check"/></svg><span data-i18n="meat.c1">Beef, pork, chicken, seafood and chorizo</span></li>
                 <li><svg><use href="#i-check"/></svg><span data-i18n="meat.c2">Special cuts, carnitas, barbacoa, lengua, tripas and menudo</span></li>
                 <li><svg><use href="#i-check"/></svg><span data-i18n="meat.c3">Custom cuts and bulk orders for parties — just ask the counter</span></li>
               </ul>
+              <a class="callout callout-wild" href="#wild-game">
+                <svg class="ico"><use href="#i-antler"/></svg>
+                <span><b data-i18n="meat.wildh">We Have Wild Game</b><small data-i18n="meat.wildp">Deer, elk, antelope &amp; more — cut, wrap, grind and sausage.</small></span>
+                <span class="go" aria-hidden="true">→</span>
+              </a>
+              <a class="callout" href="#cortes">
+                <svg class="ico"><use href="#i-knife"/></svg>
+                <span><b data-i18n="meat.cutsh">Pick Your Cut</b><small data-i18n="meat.cutsp">Tap the beef or pork diagram and send us your cut list.</small></span>
+                <span class="go" aria-hidden="true">→</span>
+              </a>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ================= BUTCHER'S GUIDE (interactive) ================= -->
+    <section class="section cuts-section" id="cortes">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <span class="script" data-i18n="cuts.script">Guía del Carnicero</span>
+          <h2 data-i18n="cuts.h2">Pick Your Cut</h2>
+          <p class="lede" data-i18n="cuts.lede">Tap any part of the animal to see the cuts that come from it and what they're best for. Add what you want to your cut list and send it to our butchers — we'll have it ready.</p>
+        </div>
+        <div id="cut-guide" class="cut-guide reveal"></div>
+      </div>
+    </section>
+
+    <!-- ================= WILD GAME ================= -->
+    <section class="section wood-bg wild" id="wild-game">
+      <div class="wrap">
+        <div class="wild-intro reveal">
+          <div>
+            <span class="script" data-i18n="wild.script">Caza Silvestre</span>
+            <h2><span data-i18n="wild.h2a">We Have</span> <span class="gold-text" data-i18n="wild.h2b">Wild Game</span></h2>
+            <p class="lede" data-i18n="wild.lede">Wild game refers to animals that are hunted in the wild rather than raised on a farm for meat production. Examples include deer, elk, antelope, moose, and wild boar.</p>
+            <div class="chips wild-chips">
+              <span class="chip" data-i18n="wild.a1">Deer</span>
+              <span class="chip" data-i18n="wild.a2">Elk</span>
+              <span class="chip" data-i18n="wild.a3">Antelope</span>
+              <span class="chip" data-i18n="wild.a4">Moose</span>
+              <span class="chip" data-i18n="wild.a5">Wild Boar</span>
+            </div>
+          </div>
+          <div class="wild-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><use href="#i-antler"/></svg>
+          </div>
+        </div>
+
+        <article class="flyer reveal" aria-labelledby="wg-title">
+          <header class="flyer-head">
+            <svg class="flyer-mtn" viewBox="0 0 1000 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90 L90 40 L150 62 L240 12 L330 58 L400 30 L470 66 L560 18 L640 56 L720 26 L800 60 L880 22 L1000 70 L1000 90 Z"/></svg>
+            <h3 id="wg-title" data-i18n="wild.title">Wild Game Processing</h3>
+            <p class="flyer-addr">1200 S Bridge Street · Winnemucca, NV 89445 · <a href="tel:+17756232405">(775) 623-2405</a></p>
+            <p class="flyer-tag" data-i18n="wild.tag">Clean, simple pricing for cut, wrap, grind, and sausage services</p>
+          </header>
+
+          <div class="flyer-block">
+            <span class="ribbon" data-i18n="wild.s1">Basic Processing</span>
+            <div class="flyer-row">
+              <svg class="flyer-ico" viewBox="0 0 64 64" aria-hidden="true"><g transform="rotate(-40 32 32)"><rect x="18" y="4" width="22" height="26" rx="3" fill="currentColor"/><circle cx="35" cy="10" r="2.6" fill="#f6eedb"/><rect x="25" y="29" width="8" height="26" rx="3.5" fill="currentColor"/></g><g transform="rotate(40 32 32)"><rect x="24" y="4" width="22" height="26" rx="3" fill="currentColor"/><circle cx="29" cy="10" r="2.6" fill="#f6eedb"/><rect x="31" y="29" width="8" height="26" rx="3.5" fill="currentColor"/></g></svg>
+              <table class="flyer-table">
+                <tr><th data-i18n="wild.r1">Deer, Antelope, Bighorn</th><td><b>$220.00</b> <span data-i18n="wild.min">minimum</span></td></tr>
+                <tr><th data-i18n="wild.r2">Elk &amp; Other Large Animals</th><td><b>$1.65</b> <span data-i18n="wild.lb">per pound</span></td></tr>
+                <tr><th data-i18n="wild.r3">Grind/Wrap Game Trim</th><td><b>$1.65</b> <span data-i18n="wild.lb">per pound</span></td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="flyer-block">
+            <span class="ribbon" data-i18n="wild.s2">Value Added</span>
+            <div class="flyer-row">
+              <svg class="flyer-ico" viewBox="0 0 64 64" aria-hidden="true"><g fill="#fff" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M10 34 24 28l12 6-14 6Z"/><path d="M10 34v12l12 6V40Z"/><path d="M22 40v12l14-6V34Z"/><path d="M30 20 42 15l12 5-12 5Z"/><path d="M30 20v11l12 5V25Z"/><path d="M42 25v11l12-5V20Z"/></g></svg>
+              <table class="flyer-table">
+                <tr><th data-i18n="wild.r4">Beef Fat</th><td><b>$1.99</b> <span data-i18n="wild.lb">per pound</span></td></tr>
+                <tr><th data-i18n="wild.r5">Pork Fat</th><td><b>$2.99</b> <span data-i18n="wild.lb">per pound</span></td></tr>
+                <tr><th data-i18n="wild.r6">Lean Pork</th><td><b>$4.49</b> <span data-i18n="wild.lb">per pound</span></td></tr>
+                <tr><th data-i18n="wild.r7">Lean Beef</th><td><b>$3.99</b> <span data-i18n="wild.lb">per pound</span></td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="flyer-block">
+            <span class="ribbon" data-i18n="wild.s3">Sausage Making</span>
+            <div class="flyer-row">
+              <svg class="flyer-ico" viewBox="0 0 64 64" aria-hidden="true"><g fill="currentColor"><rect x="4" y="18" width="46" height="14" rx="7" transform="rotate(-12 27 25)"/><rect x="10" y="32" width="46" height="14" rx="7" transform="rotate(-12 33 39)"/><circle cx="50" cy="48" r="9" fill="#f1c4b8" stroke="currentColor" stroke-width="3"/></g><g fill="currentColor"><circle cx="47" cy="46" r="1.4"/><circle cx="52" cy="50" r="1.4"/><circle cx="51" cy="44" r="1.2"/></g></svg>
+              <table class="flyer-table">
+                <tr><th data-i18n="wild.r8">Salami / Summer Sausage</th><td><b>$3.49</b> <span data-i18n="wild.lb">per pound</span></td></tr>
+                <tr><th><span data-i18n="wild.r9">Basque Chorizos</span><small data-i18n="wild.nopork">(not including price of pork)</small></th><td><b>$3.49</b> <span data-i18n="wild.lb">per pound</span> <em class="pork" data-i18n="wild.pork">50% pork</em></td></tr>
+                <tr><th data-i18n="wild.r10">American Sausage Bulk</th><td><b>$2.49</b> <span data-i18n="wild.lb">per pound</span> <em class="pork" data-i18n="wild.pork">50% pork</em></td></tr>
+                <tr><th data-i18n="wild.r11">Italian Sausage Bulk</th><td><b>$2.49</b> <span data-i18n="wild.lb">per pound</span> <em class="pork" data-i18n="wild.pork">50% pork</em></td></tr>
+                <tr><th><span data-i18n="wild.r12">Italian Link Hot or Mild</span><small data-i18n="wild.nopork">(not including price of pork)</small></th><td><b>$2.99</b> <span data-i18n="wild.lb">per pound</span> <em class="pork" data-i18n="wild.pork">50% pork</em></td></tr>
+                <tr><th data-i18n="wild.r13">Jerky</th><td><b>$3.99</b> <span data-i18n="wild.lb">per pound</span></td></tr>
+                <tr><th>Pepperoni</th><td><b>$4.99</b> <span data-i18n="wild.lb">per pound</span></td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="flyer-notes">
+            <div class="notes-label"><span data-i18n="wild.noteh">Important Information &amp; Notes</span><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-antler"/></svg></div>
+            <ul>
+              <li data-i18n="wild.n1">We cannot accept animals that are <strong>NOT CLEANED.</strong></li>
+              <li data-i18n="wild.n2">Animals must be completely skinned with <strong>NO</strong> head, feet, or any organ attached.</li>
+              <li data-i18n="wild.n3">To store head or hide, it must be sealed in a plastic bag and boxed.</li>
+              <li data-i18n="wild.n4">All Uptown sausage recipes are for <strong>25-pound batches.</strong></li>
+              <li data-i18n="wild.n5">We will add pork or beef to your order to make the correct weight.</li>
+              <li data-i18n="wild.n6">We make our wild game sausage with <strong>50% pork.</strong></li>
+            </ul>
+          </div>
+
+          <footer class="flyer-foot">
+            <p class="flyer-banner" data-i18n="wild.call">Please call ahead with questions or special requests.</p>
+            <div class="flyer-ctas">
+              <a class="btn btn-red" href="tel:+17756232405"><svg><use href="#i-phone"/></svg>(775) 623-2405</a>
+              <a class="btn btn-flyer" href="https://www.google.com/maps/search/?api=1&amp;query=1200+S+Bridge+St+Winnemucca+NV+89445" target="_blank" rel="noopener"><svg><use href="#i-dir"/></svg><span data-i18n="ui.directions">Directions</span></a>
+            </div>
+            <p class="flyer-fine" data-i18n="wild.fine">Prices subject to change without notice.</p>
+          </footer>
+        </article>
       </div>
     </section>
 
@@ -417,7 +540,8 @@
     <a class="btn btn-ghost" href="#locations"><svg><use href="#i-phone"/></svg><span data-i18n="cta.call">Call / Visit</span></a>
   </div>
 
-  <script src="/assets/data.js?v=202611032052"></script>
-  <script src="/assets/app.js?v=202611032052"></script>
+  <script src="/assets/data.js?v=202611051430"></script>
+  <script src="/assets/app.js?v=202611051430"></script>
+  <script src="/assets/cuts.js?v=202611051430"></script>
 </body>
 </html>

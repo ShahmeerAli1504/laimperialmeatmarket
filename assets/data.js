@@ -91,20 +91,6 @@ window.IMPERIAL = {
       ]
     },
     {
-      id: "raw",
-      title: { en: "Raw Meat for Carne Asada", es: "Carne Cruda para Carne Asada" },
-      items: [
-        { name: "Arrachera / Skirt Steak", price: 17.99, en: "Skirt steak, marinated or plain.", es: "Arrachera, marinada o natural." },
-        { name: "Diezmillo / Chuck Roll Steak", price: 12.99, en: "Chuck roll steak, marinated or plain.", es: "Diezmillo, marinado o natural." },
-        { name: "Steak for Tacos", price: 11.99, en: "Raw steak strips, marinated or unseasoned.", es: "Bistec para tacos, marinado o natural." },
-        { name: "Beef Short Ribs", price: 9.99, en: "Raw short ribs, marinated or unseasoned.", es: "Costilla de res, marinada o natural." },
-        { name: "Pastor for Tacos", price: 5.99, en: "Marinated pork al pastor.", es: "Carne al pastor marinada." },
-        { name: "Chicken for Tacos", price: 5.99, en: "Raw chicken, marinated or plain.", es: "Pollo para tacos, marinado o natural." },
-        { name: "Chorizo", price: 5.99, en: "Seasoned ground pork sausage.", es: "Chorizo de puerco sazonado." },
-        { name: "Chicken for the Grill", price: 3.99, en: "Raw chicken for the grill, marinated or plain.", es: "Pollo para asar, marinado o natural." }
-      ]
-    },
-    {
       id: "sides",
       title: { en: "Sides", es: "Acompañantes" },
       items: [

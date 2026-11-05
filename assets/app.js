@@ -33,8 +33,35 @@
     "meat.lede": "Fuerza, calidad y tradición en cada corte. Nuestros carniceros cortan fresco todos los días — desde cortes Certified Angus Beef hasta carnes marinadas en casa listas para el asador.",
     "gal.1": "Certified Angus Beef", "gal.2": "Cortado fresco a diario", "gal.3": "Costilla y fajitas", "gal.4": "Carne asada sazonada en casa",
     "gal.5": "Marinados y chorizo", "gal.6": "Pollo para tacos",
-    "meat.cardh": "Todo para la Carne Asada",
-    "meat.note": "Marinada o natural. Precios de DoorDash — pregunta en tienda por precios por libra.",
+    "meat.cardh": "Fresco en el Mostrador",
+    "meat.note": "Cortado al momento todos los días — por libra y a tu gusto. Marinado o natural.",
+    "meat.wildh": "Tenemos Carne de Caza", "meat.wildp": "Venado, alce, berrendo y más — corte, empaque, molido y embutidos.",
+    "meat.cutsh": "Escoge Tu Corte", "meat.cutsp": "Toca el diagrama de res o cerdo y mándanos tu lista de cortes.",
+    "nav.wild": "Carne de Caza", "nav.cuts": "Escoge Tu Corte",
+    /* butcher's guide */
+    "cuts.script": "Guía del Carnicero", "cuts.h2": "Escoge Tu Corte",
+    "cuts.lede": "Toca cualquier parte del animal para ver los cortes que salen de ahí y para qué son mejores. Agrega lo que quieras a tu lista y mándala a nuestros carniceros — te lo tenemos listo.",
+    /* wild game */
+    "wild.script": "Caza Silvestre", "wild.h2a": "Tenemos", "wild.h2b": "Carne de Caza",
+    "wild.lede": "La carne de caza viene de animales cazados en estado silvestre, no criados en granja para producir carne. Por ejemplo: venado, alce (wapití), berrendo, alce americano y jabalí.",
+    "wild.a1": "Venado", "wild.a2": "Wapití (Elk)", "wild.a3": "Berrendo", "wild.a4": "Alce (Moose)", "wild.a5": "Jabalí",
+    "wild.title": "Procesamiento de Carne de Caza",
+    "wild.tag": "Precios claros y sencillos para corte, empaque, molido y embutidos",
+    "wild.s1": "Procesamiento Básico", "wild.s2": "Valor Agregado", "wild.s3": "Elaboración de Embutidos",
+    "wild.r1": "Venado, Berrendo, Borrego Cimarrón", "wild.r2": "Wapití y Otros Animales Grandes", "wild.r3": "Molido/Empaque de Recortes",
+    "wild.r4": "Grasa de Res", "wild.r5": "Grasa de Cerdo", "wild.r6": "Cerdo Magro", "wild.r7": "Res Magra",
+    "wild.r8": "Salami / Summer Sausage", "wild.r9": "Chorizo Vasco", "wild.r10": "Salchicha Americana a Granel",
+    "wild.r11": "Salchicha Italiana a Granel", "wild.r12": "Salchicha Italiana en Tripa, Picante o Suave", "wild.r13": "Cecina (Jerky)",
+    "wild.min": "mínimo", "wild.lb": "por libra", "wild.pork": "50% cerdo", "wild.nopork": "(no incluye el precio del cerdo)",
+    "wild.noteh": "Información Importante y Notas",
+    "wild.n1": "No aceptamos animales que <strong>NO ESTÉN LIMPIOS.</strong>",
+    "wild.n2": "Los animales deben venir completamente despellejados, <strong>SIN</strong> cabeza, patas ni órganos.",
+    "wild.n3": "Para guardar la cabeza o la piel, debe venir sellada en bolsa de plástico y en caja.",
+    "wild.n4": "Todas las recetas de embutido Uptown son para <strong>lotes de 25 libras.</strong>",
+    "wild.n5": "Agregamos cerdo o res a tu pedido para completar el peso correcto.",
+    "wild.n6": "Hacemos nuestro embutido de caza con <strong>50% cerdo.</strong>",
+    "wild.call": "Llama con anticipación si tienes preguntas o pedidos especiales.",
+    "wild.fine": "Precios sujetos a cambio sin previo aviso.",
     "meat.c1": "Res, cerdo, pollo, mariscos y chorizo",
     "meat.c2": "Cortes especiales, carnitas, barbacoa, lengua, tripas y menudo",
     "meat.c3": "Cortes a tu gusto y pedidos grandes para fiestas — pregunta en el mostrador",
@@ -83,12 +110,14 @@
 
   function applyLang() {
     document.documentElement.lang = lang;
+    D.lang = lang;
     nodes.forEach(function (el) {
       var k = el.dataset.i18n;
       el.innerHTML = lang === "es" && ES[k] ? ES[k] : el.dataset.en;
     });
     document.querySelectorAll(".lang button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.lang === lang)); });
     render();
+    try { document.dispatchEvent(new CustomEvent("imperial:lang", { detail: lang })); } catch (e) {}
   }
 
   /* ---------- renderers ---------- */
@@ -104,8 +133,6 @@
   function render() {
     var best = document.getElementById("best-sellers");
     if (best) best.innerHTML = cat("best").items.slice(0, 8).map(card).join("");
-    var raw = document.getElementById("raw-list");
-    if (raw) raw.innerHTML = cat("raw").items.map(priceRow).join("");
     var packs = document.getElementById("packs-list");
     if (packs) packs.innerHTML = cat("packs").items.slice(0, 6).map(priceRow).join("");
 
