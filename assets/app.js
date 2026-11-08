@@ -116,6 +116,18 @@
     "faq.q9": "¿Dónde puedo desayunar temprano?", "faq.a9": "Nuestra tienda de South Bridge St abre a las 6:30 AM — perfecta para burritos de desayuno y chilaquiles antes del trabajo.",
     "faq.q10": "¿Hablan español?", "faq.a10": "¡Claro que sí! Nuestro equipo habla español e inglés, así que llama o visítanos en el idioma que prefieras.",
     "ct.still": "¿Tienes otra pregunta? Con gusto te ayudamos.",
+    "cf.script": "Escríbenos", "cf.h2": "Envíanos un Mensaje",
+    "cf.lede": "¿Planeas una fiesta, necesitas un pedido especial o tienes una pregunta? Llena este formulario y te responderemos.",
+    "cf.name": "Tu nombre", "cf.phone": "Teléfono", "cf.email": "Correo electrónico", "cf.optional": "(opcional)",
+    "cf.store": "¿Cuál tienda?", "cf.either": "Cualquiera",
+    "cf.topic": "¿En qué te ayudamos?", "cf.t1": "Catering / pedido para fiesta", "cf.t2": "Cortes especiales / carne al mayoreo",
+    "cf.t3": "Procesamiento de caza", "cf.t4": "Pedido de panadería", "cf.t5": "Pregunta general", "cf.t6": "Comentarios",
+    "cf.date": "Fecha que lo necesitas", "cf.msg": "Tu mensaje",
+    "cf.err": "Por favor escribe tu nombre, teléfono y mensaje.", "cf.send": "Enviar Mensaje",
+    "cf.fine": "Para pedidos del mismo día, por favor llama directamente a la tienda.",
+    "cf.okH": "¡Gracias!", "cf.okP": "Recibimos tu mensaje y te responderemos lo antes posible.",
+    "cf.soonH": "Por favor llámanos", "cf.soonP": "Los mensajes en línea todavía no están conectados, así que tu mensaje no se envió. Llámanos y te ayudamos de inmediato.",
+    "cf.sending": "Enviando…", "cf.fail": "No se pudo enviar. Por favor intenta de nuevo o llámanos.",
     /* generated UI */
     "ui.order": "Ordenar", "ui.directions": "Cómo Llegar", "ui.call": "Llamar",
     "ui.services": ["Carnicería", "Taquería", "Panadería", "Abarrotes"]
@@ -241,6 +253,38 @@
   }
   if (toggle) toggle.addEventListener("click", function () { setNav(!mnav.classList.contains("open")); });
   if (mnav) mnav.addEventListener("click", function (e) { if (e.target.closest("a")) setNav(false); });
+
+  /* ---------- contact form ---------- */
+  var form = document.getElementById("contact-form");
+  if (form) {
+    var errBox = document.getElementById("cf-error");
+    var btnLabel = form.querySelector(".cf-submit span");
+    function show(id) { form.hidden = true; var el = document.getElementById(id); el.hidden = false; el.scrollIntoView({ behavior: "smooth", block: "center" }); }
+    function fail(msg) { errBox.textContent = msg; errBox.hidden = false; }
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      errBox.hidden = true;
+      var f = form.elements;
+      if (f._gotcha.value) return;
+      if (!f.name.value.trim() || !f.phone.value.trim() || !f.message.value.trim()) {
+        return fail(lang === "es" ? ES["cf.err"] : "Please fill in your name, phone number and message.");
+      }
+      if (!D.contactForm) return show("cf-soon");
+      var data = {};
+      ["name", "phone", "email", "store", "topic", "date", "message"].forEach(function (k) { data[k] = f[k].value.trim(); });
+      data._subject = "Website message: " + data.topic + " (" + data.store + ")";
+      data.language = lang;
+      var old = btnLabel.innerHTML;
+      btnLabel.textContent = lang === "es" ? ES["cf.sending"] : "Sending…";
+      form.querySelector(".cf-submit").disabled = true;
+      fetch(D.contactForm, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(data) })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); show("cf-done"); })
+        .catch(function () {
+          btnLabel.innerHTML = old; form.querySelector(".cf-submit").disabled = false;
+          fail(lang === "es" ? ES["cf.fail"] : "Sorry, that didn't send. Please try again or give us a call.");
+        });
+    });
+  }
 
   /* ---------- reveal on scroll ---------- */
   applyLang();

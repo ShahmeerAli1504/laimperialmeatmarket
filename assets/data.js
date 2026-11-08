@@ -4,6 +4,10 @@
    ========================================================================== */
 window.IMPERIAL = {
   doordash: "https://www.doordash.com/store/la-imperial-meat-market-&-taqueria-winnemucca-40366115/",
+  /* Contact form: paste the form service URL here (e.g. a Formspree or Web3Forms
+     endpoint) to start receiving messages by email. Leave "" until it's set up —
+     the form will ask customers to call instead. */
+  contactForm: "",
   instagram: "https://www.instagram.com/laimperialmeatmarket/",
   locations: [
     {
