@@ -650,3 +650,46 @@ h3 { font-size: 22px; }
 .ct-done p { margin: 0; color: var(--muted); max-width: 46ch; }
 @media (max-width: 600px) { .cf-row { grid-template-columns: 1fr; } .cf-submit { justify-self: stretch; } }
 .ct-form[hidden], .cf-error[hidden] { display: none !important; }
+
+/* ==========================================================================
+   Mobile & touch refinements
+   ========================================================================== */
+/* never let a long word (e.g. the Instagram handle) push the page sideways */
+h1, h2, h3, .lede, .script { overflow-wrap: break-word; }
+.ig-head h2 { overflow-wrap: anywhere; }
+.cg-order-head .link-btn { white-space: nowrap; }
+/* let the cut list / request form shrink below their longest dropdown option */
+.cg-grid > *, .cg-order-grid > *, .cl-item, .cl-top { min-width: 0; }
+.cl-opts label, .req-form label { grid-template-columns: minmax(0, 1fr); }
+.cg-order select, .cg-order input, .cg-order textarea { min-width: 0; max-width: 100%; }
+.cl-top b { overflow-wrap: anywhere; }
+.req-ctas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.req-ctas .btn { min-width: 0; text-align: center; white-space: normal; }
+@media (max-width: 400px) { .req-ctas .btn { padding-inline: 10px; gap: 6px; } }
+@media (max-width: 900px) { .cg-grid, .cg-order-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* bigger invisible hit areas for small inline links (layout unchanged) */
+.mcard .order, .loc .line a, .flyer-addr a, .ct-links a, .link-btn { position: relative; }
+.mcard .order::after, .loc .line a::after, .flyer-addr a::after, .ct-links a::after, .link-btn::after {
+  content: ""; position: absolute; inset: -10px -4px;
+}
+
+@media (max-width: 1080px) {
+  /* EN / ES switch: comfortable thumb size */
+  .lang button { padding: 9px 12px; min-width: 40px; }
+  /* 16px stops iOS Safari (iPhone and iPad) from zooming in when a field is tapped */
+  .cg-order select, .cg-order input, .cg-order textarea { font-size: 16px; }
+  .footer ul { gap: 2px; }
+  .footer ul a { display: inline-block; padding: 7px 0; }
+}
+
+@media (max-width: 760px) {
+  .ig-head h2 { font-size: clamp(20px, 6vw, 30px); }
+  /* the sticky order bar must not cover the end of the page */
+  .footer { padding-bottom: calc(28px + 78px); }
+  .order-bar { bottom: max(12px, env(safe-area-inset-bottom)); }
+  .cl-opts label, .req-form label { font-size: 12px; }
+  .qty button { width: 40px; height: 40px; }
+  .rchip { padding: 9px 14px; }
+  .cut-options .add { padding: 9px 14px; }
+}

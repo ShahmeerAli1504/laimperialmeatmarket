@@ -39,7 +39,7 @@ export const S = {
     text: "Text Request", call: "Call Store", copy: "Copy List", copied: "Copied!",
     tip: "Tip: paste your list into the notes of your DoorDash order, or show it at the counter. Prices by the pound in store.",
     need: "Add at least one cut first.", needInfo: "Please add your name and phone so we can reach you.",
-    clear: "Clear list", items: "items", req: "Cut request", pickup: "Pickup", any: "Either store",
+    clear: "Clear list", item: "item", items: "items", req: "Cut request", pickup: "Pickup", any: "Either store",
   },
   es: {
     beef: "Res", pork: "Cerdo", tap: "Toca una sección para cortar",
@@ -51,7 +51,7 @@ export const S = {
     text: "Mandar por Texto", call: "Llamar a la Tienda", copy: "Copiar Lista", copied: "¡Copiado!",
     tip: "Consejo: pega tu lista en las notas de tu pedido de DoorDash o enséñala en el mostrador. Precios por libra en tienda.",
     need: "Primero agrega al menos un corte.", needInfo: "Agrega tu nombre y teléfono para poder contactarte.",
-    clear: "Borrar lista", items: "cortes", req: "Pedido de cortes", pickup: "Recoger", any: "Cualquier tienda",
+    clear: "Borrar lista", item: "corte", items: "cortes", req: "Pedido de cortes", pickup: "Recoger", any: "Cualquier tienda",
   },
 };
 

@@ -320,7 +320,7 @@ export function CutGuide() {
             {count > 0 && (
               <>
                 {" "}
-                <span key={bump} className={"count" + (bump ? " bump" : "")}>{count} {s.items}</span>
+                <span key={bump} className={"count" + (bump ? " bump" : "")}>{count} {count === 1 ? s.item : s.items}</span>
               </>
             )}
           </h3>
