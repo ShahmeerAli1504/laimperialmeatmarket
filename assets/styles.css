@@ -582,3 +582,43 @@ h3 { font-size: 22px; }
   .notes-label svg { width: 26px; height: 26px; }
   .flyer-banner { padding: 10px 26px; }
 }
+
+/* ---------- contact page ---------- */
+.ct-hero-ctas { justify-content: center; }
+.ct-help { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.ct-card { display: flex; flex-direction: column; gap: 12px; padding: 26px 22px; border-radius: var(--radius); border: 1px solid var(--line); background: linear-gradient(180deg, var(--wood-2), var(--char)); }
+.ct-card h3 { font-size: 19px; }
+.ct-card p { margin: 0; color: var(--muted); font-size: 15px; flex: 1; }
+.ct-ico { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; background: rgba(227,173,60,.12); border: 1px solid var(--line); color: var(--gold); }
+.ct-ico svg { width: 24px; height: 24px; }
+.ct-links { display: flex; flex-direction: column; gap: 8px; padding-top: 6px; border-top: 1px solid var(--line); }
+.ct-links a { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; color: var(--gold-hi); }
+.ct-links a:hover { color: var(--cream); }
+.ct-links svg { width: 16px; height: 16px; flex: none; }
+.ct-hours { margin: 28px auto 0; max-width: 720px; padding: 26px; border-radius: var(--radius); border: 1px solid var(--line); background: rgba(0,0,0,.3); text-align: center; }
+.ct-hours table { width: 100%; border-collapse: collapse; margin-top: 14px; }
+.ct-hours th, .ct-hours td { padding: 12px 8px; border-bottom: 1px solid var(--line); text-align: left; font-size: 16px; }
+.ct-hours th { font-family: var(--display); color: var(--gold-hi); font-weight: 700; }
+.ct-hours td { color: var(--cream); text-align: right; }
+.ct-fine { color: var(--dim); font-size: 14px; margin: 14px 0 0; }
+.ct-faq-wrap { max-width: 860px; }
+.ct-faq { display: grid; gap: 12px; }
+.ct-faq details { border: 1px solid var(--line); border-radius: 12px; background: linear-gradient(180deg, var(--wood-2), var(--char)); overflow: hidden; }
+.ct-faq summary { list-style: none; cursor: pointer; padding: 18px 54px 18px 22px; font-weight: 700; font-size: 17px; position: relative; }
+.ct-faq summary::-webkit-details-marker { display: none; }
+.ct-faq summary::after { content: "+"; position: absolute; right: 22px; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 26px; font-weight: 400; transition: transform .2s; }
+.ct-faq details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+.ct-faq details[open] summary { color: var(--gold-hi); }
+.ct-faq details p { margin: 0; padding: 0 22px 20px; color: var(--muted); }
+.ct-still { text-align: center; margin-top: 44px; }
+.ct-still p { font-family: var(--display); font-size: 22px; margin: 0 0 18px; }
+.ct-still .taq-actions { justify-content: center; }
+@media (max-width: 1000px) { .ct-help { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .ct-help { grid-template-columns: 1fr; } .ct-hours th, .ct-hours td { display: block; text-align: left; border: 0; padding: 4px 0; } .ct-hours tr { display: block; padding: 10px 0; border-bottom: 1px solid var(--line); } }
+.ct-hero-ctas { margin-top: 8px; }
+@media (max-width: 1320px) and (min-width: 1081px) {
+  .nav a { padding: 8px 7px; font-size: 13px; letter-spacing: .04em; }
+  .header .wrap { gap: 10px; }
+  .order-btn span { display: none; }
+  .order-btn { padding: 10px 12px; }
+}
