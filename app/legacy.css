@@ -17,9 +17,12 @@
   --dim: #8a7c68;
   --radius: 14px;
   --max: 1200px;
-  --display: "Cinzel", Georgia, serif;
-  --script: "Yellowtail", cursive;
-  --body: "DM Sans", system-ui, -apple-system, Segoe UI, sans-serif;
+  /* Fonts are self-hosted by next/font (app/layout.tsx), which registers them under their
+     real names. The next/font variables sit last so its size-adjusted Arial/Times fallback
+     faces never replace system fallbacks for glyphs these fonts lack (e.g. "→"). */
+  --display: "Cinzel", Georgia, var(--font-cinzel), serif;
+  --script: "Yellowtail", var(--font-yellowtail), cursive;
+  --body: "DM Sans", system-ui, -apple-system, Segoe UI, var(--font-dm-sans), sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; }

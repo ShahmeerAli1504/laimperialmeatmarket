@@ -1,0 +1,34 @@
+/*
+  Tailwind v4, set up so it can't change the existing design:
+  - No Preflight: the site's own stylesheet (legacy.css) already sets base styles, and
+    Preflight would reset headings, lists and buttons.
+  - prefix(tw): utilities are written `tw:flex`, `tw:text-gold`, `md:tw:…` etc. The site
+    uses class names like "outline", "shadow" and "inset" that are also Tailwind utility
+    names; without the prefix those utilities would restyle the site.
+  - Layer order lets Tailwind utilities override the site CSS when you do use them.
+*/
+@layer theme, base, site, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme) prefix(tw);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "./legacy.css" layer(site);
+
+/* Brand tokens as Tailwind utilities: tw:bg-ink, tw:text-gold, tw:border-line, tw:font-display … */
+@theme inline {
+  --color-ink: var(--ink);
+  --color-char: var(--char);
+  --color-wood: var(--wood);
+  --color-wood-2: var(--wood-2);
+  --color-line: var(--line);
+  --color-gold: var(--gold);
+  --color-gold-hi: var(--gold-hi);
+  --color-gold-lo: var(--gold-lo);
+  --color-red: var(--red);
+  --color-red-hi: var(--red-hi);
+  --color-cream: var(--cream);
+  --color-muted: var(--muted);
+  --color-dim: var(--dim);
+  --font-display: var(--display);
+  --font-script: var(--script);
+  --font-body: var(--body);
+}
