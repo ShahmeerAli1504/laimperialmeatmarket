@@ -5,15 +5,28 @@ import { Icon } from "@/components/icons";
 import { T } from "@/components/lang";
 import { FullMenu } from "@/components/menu";
 import { DOORDASH } from "@/lib/data";
+import { breadcrumbJsonLd, ldJson, menuJsonLd } from "@/lib/site";
+
+const TITLE = "Taquería Menu: Tacos, Birria & Party Packs";
+const DESCRIPTION =
+  "Full La Imperial taquería menu in Winnemucca, NV: street tacos, quesabirria, birria ramen, burritos, tortas, Mexican breakfast, party packs, sides and aguas frescas — with prices. Order on DoorDash.";
 
 export const metadata: Metadata = {
-  title: "Menu | La Imperial Meat Market & Taqueria — Winnemucca, NV",
-  description: "Full taqueria menu: street tacos, quesabirria, burritos, breakfast and party packs. Order on DoorDash.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/menu" },
+  openGraph: { type: "website", url: "/menu", title: `${TITLE} | La Imperial`, description: DESCRIPTION, siteName: "La Imperial Meat Market & Taqueria", locale: "en_US" },
+  twitter: { card: "summary_large_image", title: `${TITLE} | La Imperial`, description: DESCRIPTION },
 };
 
 export default function MenuPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={ldJson(menuJsonLd)} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={ldJson(breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Menu", path: "/menu" }]))}
+      />
       <section className="page-hero">
         <div className="bg"><img src="/images/al-pastor.webp" alt="" /></div>
         <div className="wrap">

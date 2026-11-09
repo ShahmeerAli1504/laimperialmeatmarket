@@ -5,11 +5,18 @@ import { Icon } from "@/components/icons";
 import { T } from "@/components/lang";
 import { LocationGrid } from "@/components/menu";
 import { DOORDASH, INSTAGRAM } from "@/lib/data";
+import { breadcrumbJsonLd, faqJsonLd, ldJson } from "@/lib/site";
+
+const TITLE = "Contact, Hours & Directions";
+const DESCRIPTION =
+  "Call or visit La Imperial Meat Market & Taqueria at 5184 E Winnemucca Blvd (775) 623-9191 or 1200 S Bridge St (775) 623-2405. Hours, directions, catering, custom cuts, wild game processing and FAQs.";
 
 export const metadata: Metadata = {
-  title: "Contact Us | La Imperial Meat Market & Taqueria — Winnemucca, NV",
-  description:
-    "Contact La Imperial Meat Market & Taqueria in Winnemucca, NV — phone numbers, hours, directions, catering, custom cuts, wild game processing and FAQs.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/contact" },
+  openGraph: { type: "website", url: "/contact", title: `${TITLE} | La Imperial`, description: DESCRIPTION, siteName: "La Imperial Meat Market & Taqueria", locale: "en_US" },
+  twitter: { card: "summary_large_image", title: `${TITLE} | La Imperial`, description: DESCRIPTION },
 };
 
 const FAQ: [string, string, string, string][] = [
@@ -37,6 +44,11 @@ function PhoneLinks({ blvd = true, bridge = true }: { blvd?: boolean; bridge?: b
 export default function ContactPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={ldJson(faqJsonLd(FAQ.map(([, q, , a]) => ({ q, a }))))} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={ldJson(breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }]))}
+      />
       <section className="page-hero">
         <div className="bg"><img src="/images/store-bridge.webp" alt="" /></div>
         <div className="wrap">

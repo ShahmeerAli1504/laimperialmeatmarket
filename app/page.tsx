@@ -1,33 +1,15 @@
 /* eslint-disable @next/next/no-img-element -- plain <img> keeps the original markup/CSS identical */
+import type { Metadata } from "next";
 import Link from "next/link";
 import { CutGuide } from "@/components/cut-guide";
 import { Icon } from "@/components/icons";
 import { T } from "@/components/lang";
 import { BestSellers, LocationGrid, PacksList } from "@/components/menu";
 import { DOORDASH, INSTAGRAM } from "@/lib/data";
+import { ldJson, storesJsonLd } from "@/lib/site";
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": ["Restaurant", "ButcherShop"],
-      name: "La Imperial Meat Market & Taqueria",
-      servesCuisine: "Mexican",
-      priceRange: "$10–20",
-      telephone: "+1-775-623-9191",
-      address: { "@type": "PostalAddress", streetAddress: "5184 E Winnemucca Blvd", addressLocality: "Winnemucca", addressRegion: "NV", postalCode: "89445", addressCountry: "US" },
-      openingHoursSpecification: [{ "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], opens: "08:00", closes: "20:00" }],
-      sameAs: [INSTAGRAM],
-    },
-    {
-      "@type": ["Restaurant", "GroceryStore"],
-      name: "Imperial Meat Market & Taqueria — South Bridge",
-      servesCuisine: "Mexican",
-      telephone: "+1-775-623-2405",
-      address: { "@type": "PostalAddress", streetAddress: "1200 S Bridge St", addressLocality: "Winnemucca", addressRegion: "NV", postalCode: "89445", addressCountry: "US" },
-      openingHoursSpecification: [{ "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], opens: "06:30", closes: "20:00" }],
-    },
-  ],
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
 };
 
 const MARQUEE = ["Carnicería", "Taquería", "Panadería", "Abarrotes", "Carne Asada", "Wild Game", "Birria", "Al Pastor", "Pan Dulce", "Aguas Frescas", "Catering"];
@@ -53,7 +35,7 @@ const Pork = () => <T as="em" className="pork" k="wild.pork">50% pork</T>;
 export default function Home() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={ldJson(storesJsonLd)} />
 
       {/* ================= HERO ================= */}
       <section className="hero">
