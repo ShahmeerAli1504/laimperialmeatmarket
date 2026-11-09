@@ -1,14 +1,13 @@
 /* ==========================================================================
    Site-wide SEO constants + schema.org (JSON-LD) builders.
-   Set NEXT_PUBLIC_SITE_URL (e.g. https://laimperialmeatmarket.com) in Vercel so
-   canonical URLs, the sitemap and robots.txt point at the real domain.
+   Canonical URLs, sitemap.xml, robots.txt, Open Graph and JSON-LD all use the
+   production domain below. NEXT_PUBLIC_SITE_URL can override it (e.g. staging).
    ========================================================================== */
 import { DOORDASH, INSTAGRAM, MENU } from "@/lib/data";
 
-export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000")
-).replace(/\/+$/, "");
+export const PRODUCTION_URL = "https://www.imperialmeatmarket.com";
+
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || PRODUCTION_URL).replace(/\/+$/, "");
 
 export const SITE_NAME = "La Imperial Meat Market & Taqueria";
 export const SITE_SHORT_NAME = "La Imperial";
