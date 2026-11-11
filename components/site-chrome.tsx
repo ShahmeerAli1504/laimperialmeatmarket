@@ -150,6 +150,14 @@ export function Footer() {
           <span>© {year ?? ""} La Imperial Meat Market &amp; Taqueria</span>
           <span className="script">Del Rancho a Tu Mesa</span>
         </div>
+        <div className="foot-credit">
+          <a href="https://www.nexoradigital.live/" target="_blank" rel="noopener">
+            Powered by
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/nexora-logo-sm.png" alt="" width={20} height={20} loading="lazy" />
+            <strong>Nexora Digital</strong>
+          </a>
+        </div>
       </div>
     </footer>
   );
