@@ -15,6 +15,11 @@ const nextConfig: NextConfig = {
         source: "/images/:path*",
         headers: [{ key: "Cache-Control", value: "public, max-age=2592000" }],
       },
+      {
+        // API endpoints are not pages — keep them out of Google without blocking crawling.
+        source: "/api/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
     ];
   },
 };
